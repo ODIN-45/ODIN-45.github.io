@@ -1,232 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CreatorTools - Free Word Counter & Script Timer</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>CreatorTools - Free Creator Tools</title>
 
 <meta name="description"
-content="Free word counter and YouTube Shorts script timer. Count words, characters, sentences and estimate voiceover duration.">
+content="Free tools for YouTubers, writers and content creators. Word counter, script timer, hook generator and title generator.">
 
 <style>
+
+/* =========================
+   GENERAL
+========================= */
 
 * {
     box-sizing: border-box;
 }
 
 body {
+
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background: #0b1120;
+
     color: white;
 }
 
 .container {
+
     width: 92%;
+
     max-width: 950px;
+
     margin: auto;
 }
 
+
+/* =========================
+   HEADER
+========================= */
+
 header {
+
     text-align: center;
+
     padding: 50px 10px 30px;
 }
 
 .logo {
+
     font-size: 42px;
+
     font-weight: 800;
 }
 
 .subtitle {
+
     color: #94a3b8;
+
     font-size: 17px;
+
     margin-top: 10px;
 }
 
+
+/* =========================
+   TOOL BOX
+========================= */
+
 .tool {
+
     background: #111827;
+
     border: 1px solid #263244;
+
     border-radius: 20px;
+
     padding: 25px;
+
     margin-bottom: 22px;
 }
 
 .tool h2 {
+
     margin-top: 0;
 }
 
+
+/* =========================
+   TEXTAREA
+========================= */
+
 textarea {
+
     width: 100%;
+
     min-height: 250px;
+
     resize: vertical;
 
     background: #020617;
+
     color: white;
 
     border: 1px solid #334155;
+
     border-radius: 14px;
 
     padding: 18px;
 
     font-size: 17px;
+
     line-height: 1.6;
 
     outline: none;
 }
 
 textarea:focus {
+
     border-color: #64748b;
 }
 
+
+/* =========================
+   INPUTS
+========================= */
+
+input {
+
+    width: 100%;
+
+    padding: 16px;
+
+    border-radius: 12px;
+
+    border: 1px solid #334155;
+
+    background: #020617;
+
+    color: white;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+input:focus {
+
+    border-color: #64748b;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
 .buttons {
+
     display: flex;
+
     gap: 10px;
+
     margin-top: 15px;
 }
 
 button {
+
     border: none;
+
     border-radius: 10px;
+
     padding: 12px 20px;
+
     font-size: 15px;
+
     font-weight: bold;
+
     cursor: pointer;
 }
 
-.copy {
-    background: white;
-    color: #111827;
-}
-
-.clear {
-    background: #334155;
-    color: white;
-}
-
 button:hover {
+
     opacity: 0.85;
 }
 
+.primary-button {
+
+    background: white;
+
+    color: #111827;
+}
+
+.secondary-button {
+
+    background: #334155;
+
+    color: white;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
 .stats {
+
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
     gap: 12px;
+
     margin-top: 18px;
 }
 
 .stat {
+
     background: #1e293b;
+
     border-radius: 14px;
+
     padding: 18px 10px;
+
     text-align: center;
 }
 
 .number {
+
     display: block;
+
     font-size: 26px;
+
     font-weight: 800;
 }
 
 .label {
+
     display: block;
+
     color: #94a3b8;
+
     font-size: 13px;
+
     margin-top: 5px;
 }
 
-/* SCRIPT TIMER */
+
+/* =========================
+   SCRIPT TIMER
+========================= */
 
 .speed-box {
+
     margin-top: 15px;
 }
 
 .speed-box label {
+
     display: block;
+
     color: #cbd5e1;
+
     margin-bottom: 8px;
 }
 
 select {
+
     width: 100%;
+
     padding: 13px;
+
     border-radius: 10px;
+
     border: 1px solid #334155;
 
     background: #020617;
+
     color: white;
 
     font-size: 16px;
 }
 
 .timer-result {
+
     margin-top: 20px;
+
     background: #1e293b;
+
     border-radius: 14px;
+
     padding: 25px;
+
     text-align: center;
 }
 
 .timer-number {
+
     font-size: 38px;
+
     font-weight: 800;
 }
 
 .timer-label {
+
     color: #94a3b8;
+
     margin-top: 5px;
 }
 
+
+/* =========================
+   GENERATED RESULTS
+========================= */
+
+.result {
+
+    display: none;
+
+    margin-top: 20px;
+
+    background: #1e293b;
+
+    padding: 20px;
+
+    border-radius: 14px;
+
+    line-height: 1.8;
+}
+
+.result-item {
+
+    padding: 10px 0;
+
+    border-bottom:
+        1px solid #334155;
+}
+
+.result-item:last-child {
+
+    border-bottom: none;
+}
+
+
+/* =========================
+   INFO
+========================= */
+
 .info {
+
     margin-top: 30px;
+
     background: #111827;
+
     border-radius: 18px;
+
     padding: 25px;
+
     line-height: 1.7;
+
     color: #cbd5e1;
 }
 
 .info h2 {
+
     color: white;
+
     margin-top: 0;
 }
 
+
+/* =========================
+   FOOTER
+========================= */
+
 footer {
+
     text-align: center;
+
     color: #64748b;
+
     padding: 40px 10px;
+
     font-size: 14px;
 }
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 650px) {
 
     .logo {
+
         font-size: 34px;
     }
 
     .tool {
+
         padding: 16px;
     }
 
     .stats {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
     .buttons {
+
         flex-direction: column;
     }
 
     button {
+
         width: 100%;
     }
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
+
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -241,70 +458,138 @@ Free tools for writers and content creators.
 </header>
 
 
-<!-- WORD COUNTER -->
+
+<!-- =========================
+     WORD COUNTER
+========================= -->
 
 <div class="tool">
 
-<h2>📝 Word & Character Counter</h2>
+<h2>
+📝 Word & Character Counter
+</h2>
 
 <textarea
 id="text"
 placeholder="Paste or type your text here..."
 ></textarea>
 
+
 <div class="buttons">
 
-<button class="copy" onclick="copyText()">
+<button
+class="primary-button"
+onclick="copyText()"
+>
 Copy Text
 </button>
 
-<button class="clear" onclick="clearText()">
+<button
+class="secondary-button"
+onclick="clearText()"
+>
 Clear
 </button>
 
 </div>
 
+
 <div class="stats">
 
-<div class="stat">
-<span class="number" id="words">0</span>
-<span class="label">Words</span>
-</div>
 
 <div class="stat">
-<span class="number" id="characters">0</span>
-<span class="label">Characters</span>
+
+<span
+class="number"
+id="words"
+>
+0
+</span>
+
+<span class="label">
+Words
+</span>
+
 </div>
+
 
 <div class="stat">
-<span class="number" id="sentences">0</span>
-<span class="label">Sentences</span>
+
+<span
+class="number"
+id="characters"
+>
+0
+</span>
+
+<span class="label">
+Characters
+</span>
+
 </div>
+
 
 <div class="stat">
-<span class="number" id="reading">0 min</span>
-<span class="label">Reading Time</span>
+
+<span
+class="number"
+id="sentences"
+>
+0
+</span>
+
+<span class="label">
+Sentences
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<span
+class="number"
+id="reading"
+>
+0 min
+</span>
+
+<span class="label">
+Reading Time
+</span>
+
+</div>
+
+
 </div>
 
 </div>
 
-</div>
 
 
-<!-- SCRIPT TIMER -->
+<!-- =========================
+     SCRIPT TIMER
+========================= -->
 
 <div class="tool">
 
-<h2>🎬 YouTube Shorts Script Timer</h2>
+<h2>
+🎬 YouTube Shorts Script Timer
+</h2>
 
 <p style="color:#94a3b8;">
-Paste your Shorts script below to estimate how long the voiceover will take.
+
+Paste your Shorts script below
+to estimate voiceover duration.
+
 </p>
+
 
 <textarea
 id="script"
 placeholder="Paste your YouTube Shorts script here..."
 ></textarea>
+
 
 <div class="speed-box">
 
@@ -312,13 +597,17 @@ placeholder="Paste your YouTube Shorts script here..."
 Speaking speed
 </label>
 
+
 <select id="speed">
 
 <option value="130">
 Slow — 130 words/min
 </option>
 
-<option value="150" selected>
+<option
+value="150"
+selected
+>
 Normal — 150 words/min
 </option>
 
@@ -330,9 +619,13 @@ Fast — 175 words/min
 
 </div>
 
+
 <div class="timer-result">
 
-<div class="timer-number" id="duration">
+<div
+class="timer-number"
+id="duration"
+>
 0:00
 </div>
 
@@ -344,107 +637,103 @@ Estimated voiceover duration
 
 </div>
 
-<!-- HOOK GENERATOR -->
+
+
+<!-- =========================
+     HOOK GENERATOR
+========================= -->
 
 <div class="tool">
 
-<h2>🪝 YouTube Shorts Hook Generator</h2>
+<h2>
+🪝 YouTube Shorts Hook Generator
+</h2>
 
 <p style="color:#94a3b8;">
-Enter your topic and generate a quick hook idea for your Short.
+
+Enter your topic and generate
+a quick hook idea.
+
 </p>
+
 
 <input
 id="topic"
 type="text"
-placeholder="Example: Why do airplanes have black boxes?"
-style="
-width:100%;
-padding:16px;
-border-radius:12px;
-border:1px solid #334155;
-background:#020617;
-color:white;
-font-size:16px;
-outline:none;
-"
+placeholder="Example: Black holes"
 >
 
+
 <button
+class="primary-button"
 onclick="generateHook()"
-style="
-margin-top:15px;
-background:white;
-color:#111827;
-"
+style="margin-top:15px;"
 >
+
 Generate Hook
+
 </button>
+
 
 <div
 id="hookResult"
-style="
-display:none;
-margin-top:20px;
-background:#1e293b;
-padding:20px;
-border-radius:14px;
-line-height:1.6;
-"
-></div>
+class="result"
+>
+</div>
 
 </div>
-<!-- TITLE GENERATOR -->
+
+
+
+<!-- =========================
+     TITLE GENERATOR
+========================= -->
 
 <div class="tool">
 
-<h2>🎯 YouTube Title Generator</h2>
+<h2>
+🎯 YouTube Title Generator
+</h2>
 
 <p style="color:#94a3b8;">
-Enter your video topic and generate title ideas.
+
+Enter your video topic and
+generate title ideas.
+
 </p>
+
 
 <input
 id="titleTopic"
 type="text"
 placeholder="Example: Black holes"
-style="
-width:100%;
-padding:16px;
-border-radius:12px;
-border:1px solid #334155;
-background:#020617;
-color:white;
-font-size:16px;
-outline:none;
-"
 >
 
+
 <button
+class="primary-button"
 onclick="generateTitles()"
-style="
-margin-top:15px;
-background:white;
-color:#111827;
-"
+style="margin-top:15px;"
 >
+
 Generate Titles
+
 </button>
+
 
 <div
 id="titleResult"
-style="
-display:none;
-margin-top:20px;
-background:#1e293b;
-padding:20px;
-border-radius:14px;
-line-height:1.8;
-"
-></div>
+class="result"
+>
+</div>
 
 </div>
-<!-- INFO -->
+
+
+
+<!-- =========================
+     INFO
+========================= -->
 
 <div class="info">
 
@@ -453,17 +742,28 @@ Free Creator Tools
 </h2>
 
 <p>
-CreatorTools provides simple browser-based tools for writers,
+
+CreatorTools provides simple
+browser-based tools for writers,
 YouTubers and content creators.
+
 </p>
 
 <p>
-No software installation is required. Your text is processed directly
+
+No software installation is required.
+Your text is processed directly
 in your browser.
+
 </p>
 
 </div>
 
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -471,71 +771,133 @@ CreatorTools — Free tools for creators
 
 </footer>
 
+
 </div>
 
 
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
 
-const textBox = document.getElementById("text");
 
-const scriptBox = document.getElementById("script");
+/* =========================
+   GET ELEMENTS
+========================= */
 
-const speedBox = document.getElementById("speed");
+const textBox =
+    document.getElementById("text");
+
+const scriptBox =
+    document.getElementById("script");
+
+const speedBox =
+    document.getElementById("speed");
 
 
-/* WORD COUNTER */
+/* =========================
+   WORD COUNTER
+========================= */
 
-textBox.addEventListener("input", updateCounter);
+textBox.addEventListener(
+    "input",
+    updateCounter
+);
 
 
 function updateCounter() {
 
-    const text = textBox.value;
+    const text =
+        textBox.value;
 
-    const words = text.trim()
+
+    const words =
+        text.trim()
         ? text.trim().split(/\s+/).length
         : 0;
 
-    const characters = text.length;
 
-    const sentences = text
+    const characters =
+        text.length;
+
+
+    const sentences =
+        text
         .split(/[.!?]+/)
-        .filter(sentence => sentence.trim().length > 0)
+        .filter(
+            sentence =>
+            sentence.trim().length > 0
+        )
         .length;
 
-    const readingMinutes = words === 0
+
+    const readingMinutes =
+        words === 0
         ? 0
-        : Math.max(1, Math.ceil(words / 200));
+        : Math.max(
+            1,
+            Math.ceil(words / 200)
+        );
 
-    document.getElementById("words").textContent = words;
 
-    document.getElementById("characters").textContent = characters;
+    document.getElementById(
+        "words"
+    ).textContent = words;
 
-    document.getElementById("sentences").textContent = sentences;
 
-    document.getElementById("reading").textContent =
+    document.getElementById(
+        "characters"
+    ).textContent = characters;
+
+
+    document.getElementById(
+        "sentences"
+    ).textContent = sentences;
+
+
+    document.getElementById(
+        "reading"
+    ).textContent =
         readingMinutes + " min";
 }
 
 
-/* COPY */
+
+/* =========================
+   COPY TEXT
+========================= */
 
 function copyText() {
 
-    if (textBox.value.trim() === "") {
+    if (
+        textBox.value.trim() === ""
+    ) {
 
-        alert("There is no text to copy.");
+        alert(
+            "There is no text to copy."
+        );
 
         return;
     }
 
-    navigator.clipboard.writeText(textBox.value);
 
-    alert("Text copied!");
+    navigator.clipboard.writeText(
+        textBox.value
+    );
+
+
+    alert(
+        "Text copied!"
+    );
 }
 
 
-/* CLEAR */
+
+/* =========================
+   CLEAR TEXT
+========================= */
 
 function clearText() {
 
@@ -547,48 +909,95 @@ function clearText() {
 }
 
 
-/* SCRIPT TIMER */
 
-scriptBox.addEventListener("input", updateTimer);
+/* =========================
+   SCRIPT TIMER
+========================= */
 
-speedBox.addEventListener("change", updateTimer);
+scriptBox.addEventListener(
+    "input",
+    updateTimer
+);
+
+
+speedBox.addEventListener(
+    "change",
+    updateTimer
+);
 
 
 function updateTimer() {
 
-    const text = scriptBox.value;
+    const text =
+        scriptBox.value;
 
-    const words = text.trim()
+
+    const words =
+        text.trim()
         ? text.trim().split(/\s+/).length
         : 0;
 
-    const speed = Number(speedBox.value);
 
-    const totalSeconds = Math.round(
-        (words / speed) * 60
-    );
+    const speed =
+        Number(speedBox.value);
 
-    const minutes = Math.floor(
-        totalSeconds / 60
-    );
 
-    const seconds = totalSeconds % 60;
+    const totalSeconds =
+        Math.round(
+            (words / speed) * 60
+        );
 
-    document.getElementById("duration").textContent =
-        minutes + ":" + String(seconds).padStart(2, "0");
+
+    const minutes =
+        Math.floor(
+            totalSeconds / 60
+        );
+
+
+    const seconds =
+        totalSeconds % 60;
+
+
+    document.getElementById(
+        "duration"
+    ).textContent =
+        minutes +
+        ":" +
+        String(seconds).padStart(
+            2,
+            "0"
+        );
 }
+
+
+
+/* =========================
+   HOOK GENERATOR
+========================= */
+
 function generateHook() {
 
-    const topic = document.getElementById("topic").value.trim();
+    const topic =
+        document
+        .getElementById("topic")
+        .value
+        .trim();
 
-    const result = document.getElementById("hookResult");
+
+    const result =
+        document
+        .getElementById("hookResult");
+
 
     if (topic === "") {
 
-        alert("Enter a topic first.");
+        alert(
+            "Enter a topic first."
+        );
 
         return;
     }
+
 
     const hooks = [
 
@@ -604,27 +1013,55 @@ function generateHook() {
 
     ];
 
+
     const randomHook =
-        hooks[Math.floor(Math.random() * hooks.length)];
+        hooks[
+            Math.floor(
+                Math.random() *
+                hooks.length
+            )
+        ];
 
-    result.textContent = randomHook;
 
-    result.style.display = "block";
-    {
-    function generateTitles() {
+    result.innerHTML =
+        `<div class="result-item">
+            🔥 ${randomHook}
+        </div>`;
+
+
+    result.style.display =
+        "block";
+}
+
+
+
+/* =========================
+   TITLE GENERATOR
+========================= */
+
+function generateTitles() {
 
     const topic =
-        document.getElementById("titleTopic").value.trim();
+        document
+        .getElementById("titleTopic")
+        .value
+        .trim();
+
 
     const result =
-        document.getElementById("titleResult");
+        document
+        .getElementById("titleResult");
+
 
     if (topic === "") {
 
-        alert("Enter a topic first.");
+        alert(
+            "Enter a topic first."
+        );
 
         return;
     }
+
 
     const titles = [
 
@@ -646,14 +1083,26 @@ function generateHook() {
 
     ];
 
-    result.innerHTML = titles
-        .map(title => `<div>🔥 ${title}</div>`)
+
+    result.innerHTML =
+        titles
+        .map(
+            title =>
+            `<div class="result-item">
+                🔥 ${title}
+            </div>`
+        )
         .join("");
 
-    result.style.display = "block";
-    }
+
+    result.style.display =
+        "block";
+}
+
 
 </script>
 
+
 </body>
+
 </html>
