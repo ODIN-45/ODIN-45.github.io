@@ -5,18 +5,17 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CreatorTools - Free Creator Tools</title>
 
 <meta name="description"
-content="Free tools for YouTubers, writers and content creators. Word counter, script timer, hook generator and title generator.">
+content="Free creator tools including word counter, character counter, script timer, YouTube hook generator and title generator.">
 
 <style>
 
 /* =========================
-   GENERAL
+   BASE
 ========================= */
 
 * {
@@ -24,25 +23,15 @@ content="Free tools for YouTubers, writers and content creators. Word counter, s
 }
 
 body {
-
     margin: 0;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
     background: #0b1120;
-
     color: white;
 }
 
 .container {
-
     width: 92%;
-
     max-width: 950px;
-
     margin: auto;
 }
 
@@ -52,48 +41,35 @@ body {
 ========================= */
 
 header {
-
     text-align: center;
-
     padding: 50px 10px 30px;
 }
 
 .logo {
-
     font-size: 42px;
-
     font-weight: 800;
 }
 
 .subtitle {
-
     color: #94a3b8;
-
     font-size: 17px;
-
     margin-top: 10px;
 }
 
 
 /* =========================
-   TOOL BOX
+   TOOL CARDS
 ========================= */
 
 .tool {
-
     background: #111827;
-
     border: 1px solid #263244;
-
     border-radius: 20px;
-
     padding: 25px;
-
     margin-bottom: 22px;
 }
 
 .tool h2 {
-
     margin-top: 0;
 }
 
@@ -103,42 +79,34 @@ header {
 ========================= */
 
 textarea {
-
     width: 100%;
-
     min-height: 250px;
-
     resize: vertical;
 
     background: #020617;
-
     color: white;
 
     border: 1px solid #334155;
-
     border-radius: 14px;
 
     padding: 18px;
 
     font-size: 17px;
-
     line-height: 1.6;
 
     outline: none;
 }
 
 textarea:focus {
-
     border-color: #64748b;
 }
 
 
 /* =========================
-   INPUTS
+   INPUT
 ========================= */
 
 input {
-
     width: 100%;
 
     padding: 16px;
@@ -157,7 +125,6 @@ input {
 }
 
 input:focus {
-
     border-color: #64748b;
 }
 
@@ -166,17 +133,7 @@ input:focus {
    BUTTONS
 ========================= */
 
-.buttons {
-
-    display: flex;
-
-    gap: 10px;
-
-    margin-top: 15px;
-}
-
 button {
-
     border: none;
 
     border-radius: 10px;
@@ -191,31 +148,33 @@ button {
 }
 
 button:hover {
-
     opacity: 0.85;
 }
 
-.primary-button {
-
+.primary {
     background: white;
-
     color: #111827;
 }
 
-.secondary-button {
-
+.secondary {
     background: #334155;
-
     color: white;
 }
 
 
 /* =========================
-   STATS
+   WORD COUNTER STATS
 ========================= */
 
-.stats {
+.buttons {
+    display: flex;
 
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.stats {
     display: grid;
 
     grid-template-columns:
@@ -227,7 +186,6 @@ button:hover {
 }
 
 .stat {
-
     background: #1e293b;
 
     border-radius: 14px;
@@ -238,7 +196,6 @@ button:hover {
 }
 
 .number {
-
     display: block;
 
     font-size: 26px;
@@ -247,7 +204,6 @@ button:hover {
 }
 
 .label {
-
     display: block;
 
     color: #94a3b8;
@@ -263,12 +219,10 @@ button:hover {
 ========================= */
 
 .speed-box {
-
     margin-top: 15px;
 }
 
 .speed-box label {
-
     display: block;
 
     color: #cbd5e1;
@@ -277,7 +231,6 @@ button:hover {
 }
 
 select {
-
     width: 100%;
 
     padding: 13px;
@@ -294,7 +247,6 @@ select {
 }
 
 .timer-result {
-
     margin-top: 20px;
 
     background: #1e293b;
@@ -307,14 +259,12 @@ select {
 }
 
 .timer-number {
-
     font-size: 38px;
 
     font-weight: 800;
 }
 
 .timer-label {
-
     color: #94a3b8;
 
     margin-top: 5px;
@@ -322,11 +272,10 @@ select {
 
 
 /* =========================
-   GENERATED RESULTS
+   GENERATOR RESULTS
 ========================= */
 
 .result {
-
     display: none;
 
     margin-top: 20px;
@@ -337,19 +286,17 @@ select {
 
     border-radius: 14px;
 
-    line-height: 1.8;
+    line-height: 1.7;
 }
 
 .result-item {
-
-    padding: 10px 0;
+    padding: 12px 0;
 
     border-bottom:
         1px solid #334155;
 }
 
 .result-item:last-child {
-
     border-bottom: none;
 }
 
@@ -359,7 +306,6 @@ select {
 ========================= */
 
 .info {
-
     margin-top: 30px;
 
     background: #111827;
@@ -374,7 +320,6 @@ select {
 }
 
 .info h2 {
-
     color: white;
 
     margin-top: 0;
@@ -386,7 +331,6 @@ select {
 ========================= */
 
 footer {
-
     text-align: center;
 
     color: #64748b;
@@ -404,30 +348,26 @@ footer {
 @media (max-width: 650px) {
 
     .logo {
-
         font-size: 34px;
     }
 
     .tool {
-
         padding: 16px;
     }
 
     .stats {
-
         grid-template-columns:
             repeat(2, 1fr);
     }
 
     .buttons {
-
         flex-direction: column;
     }
 
     button {
-
         width: 100%;
     }
+
 }
 
 </style>
@@ -478,14 +418,14 @@ placeholder="Paste or type your text here..."
 <div class="buttons">
 
 <button
-class="primary-button"
+class="primary"
 onclick="copyText()"
 >
 Copy Text
 </button>
 
 <button
-class="secondary-button"
+class="secondary"
 onclick="clearText()"
 >
 Clear
@@ -604,10 +544,7 @@ Speaking speed
 Slow — 130 words/min
 </option>
 
-<option
-value="150"
-selected
->
+<option value="150" selected>
 Normal — 150 words/min
 </option>
 
@@ -665,7 +602,7 @@ placeholder="Example: Black holes"
 
 
 <button
-class="primary-button"
+class="primary"
 onclick="generateHook()"
 style="margin-top:15px;"
 >
@@ -697,8 +634,8 @@ class="result"
 
 <p style="color:#94a3b8;">
 
-Enter your video topic and
-generate title ideas.
+Enter your video topic and generate
+8 title ideas.
 
 </p>
 
@@ -711,7 +648,7 @@ placeholder="Example: Black holes"
 
 
 <button
-class="primary-button"
+class="primary"
 onclick="generateTitles()"
 style="margin-top:15px;"
 >
@@ -784,27 +721,11 @@ CreatorTools — Free tools for creators
 
 
 /* =========================
-   GET ELEMENTS
+   WORD COUNTER
 ========================= */
 
 const textBox =
     document.getElementById("text");
-
-const scriptBox =
-    document.getElementById("script");
-
-const speedBox =
-    document.getElementById("speed");
-
-
-/* =========================
-   WORD COUNTER
-========================= */
-
-textBox.addEventListener(
-    "input",
-    updateCounter
-);
 
 
 function updateCounter() {
@@ -813,10 +734,15 @@ function updateCounter() {
         textBox.value;
 
 
-    const words =
-        text.trim()
-        ? text.trim().split(/\s+/).length
-        : 0;
+    let words = 0;
+
+
+    if (text.trim() !== "") {
+
+        words =
+            text.trim().split(/\s+/).length;
+
+    }
 
 
     const characters =
@@ -828,18 +754,23 @@ function updateCounter() {
         .split(/[.!?]+/)
         .filter(
             sentence =>
-            sentence.trim().length > 0
+            sentence.trim() !== ""
         )
         .length;
 
 
-    const readingMinutes =
-        words === 0
-        ? 0
-        : Math.max(
-            1,
-            Math.ceil(words / 200)
-        );
+    let readingMinutes = 0;
+
+
+    if (words > 0) {
+
+        readingMinutes =
+            Math.max(
+                1,
+                Math.ceil(words / 200)
+            );
+
+    }
 
 
     document.getElementById(
@@ -864,9 +795,15 @@ function updateCounter() {
 }
 
 
+textBox.addEventListener(
+    "input",
+    updateCounter
+);
+
+
 
 /* =========================
-   COPY TEXT
+   COPY
 ========================= */
 
 function copyText() {
@@ -896,7 +833,7 @@ function copyText() {
 
 
 /* =========================
-   CLEAR TEXT
+   CLEAR
 ========================= */
 
 function clearText() {
@@ -914,16 +851,11 @@ function clearText() {
    SCRIPT TIMER
 ========================= */
 
-scriptBox.addEventListener(
-    "input",
-    updateTimer
-);
+const scriptBox =
+    document.getElementById("script");
 
-
-speedBox.addEventListener(
-    "change",
-    updateTimer
-);
+const speedBox =
+    document.getElementById("speed");
 
 
 function updateTimer() {
@@ -932,10 +864,15 @@ function updateTimer() {
         scriptBox.value;
 
 
-    const words =
-        text.trim()
-        ? text.trim().split(/\s+/).length
-        : 0;
+    let words = 0;
+
+
+    if (text.trim() !== "") {
+
+        words =
+            text.trim().split(/\s+/).length;
+
+    }
 
 
     const speed =
@@ -961,6 +898,7 @@ function updateTimer() {
     document.getElementById(
         "duration"
     ).textContent =
+
         minutes +
         ":" +
         String(seconds).padStart(
@@ -968,6 +906,18 @@ function updateTimer() {
             "0"
         );
 }
+
+
+scriptBox.addEventListener(
+    "input",
+    updateTimer
+);
+
+
+speedBox.addEventListener(
+    "change",
+    updateTimer
+);
 
 
 
@@ -1001,26 +951,38 @@ function generateHook() {
 
     const hooks = [
 
-        `You probably don't know the truth about ${topic}.`,
+        "You probably don't know the truth about " +
+        topic +
+        ".",
 
-        `What if everything you knew about ${topic} was wrong?`,
+        "What if everything you knew about " +
+        topic +
+        " was wrong?",
 
-        `There's something strange about ${topic} that almost nobody talks about.`,
+        "There's something strange about " +
+        topic +
+        " that almost nobody talks about.",
 
-        `Here's the part about ${topic} that most people miss.`,
+        "Here's the part about " +
+        topic +
+        " that most people miss.",
 
-        `This might completely change the way you look at ${topic}.`
+        "This might completely change the way you look at " +
+        topic +
+        "."
 
     ];
 
 
+    const randomIndex =
+        Math.floor(
+            Math.random() *
+            hooks.length
+        );
+
+
     const randomHook =
-        hooks[
-            Math.floor(
-                Math.random() *
-                hooks.length
-            )
-        ];
+        hooks[randomIndex];
 
 
     result.innerHTML =
@@ -1065,34 +1027,55 @@ function generateTitles() {
 
     const titles = [
 
-        `The Truth About ${topic} Nobody Tells You`,
+        "The Truth About " +
+        topic +
+        " Nobody Tells You",
 
-        `What Really Happens With ${topic}?`,
+        "What Really Happens With " +
+        topic +
+        "?",
 
-        `The Dark Mystery Behind ${topic}`,
+        "The Dark Mystery Behind " +
+        topic,
 
-        `Scientists Still Can't Explain This About ${topic}`,
+        "Scientists Still Can't Explain This About " +
+        topic,
 
-        `You Won't Believe What We Found About ${topic}`,
+        "You Won't Believe What We Found About " +
+        topic,
 
-        `The Strange Secret of ${topic}`,
+        "The Strange Secret of " +
+        topic,
 
-        `What If Everything You Know About ${topic} Is Wrong?`,
+        "What If Everything You Know About " +
+        topic +
+        " Is Wrong?",
 
-        `This Changes Everything About ${topic}`
+        "This Changes Everything About " +
+        topic
 
     ];
 
 
-    result.innerHTML =
-        titles
-        .map(
-            title =>
+    let html = "";
+
+
+    for (
+        let i = 0;
+        i < titles.length;
+        i++
+    ) {
+
+        html +=
             `<div class="result-item">
-                🔥 ${title}
-            </div>`
-        )
-        .join("");
+                🔥 ${titles[i]}
+            </div>`;
+
+    }
+
+
+    result.innerHTML =
+        html;
 
 
     result.style.display =
