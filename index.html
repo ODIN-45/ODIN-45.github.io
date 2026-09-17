@@ -394,6 +394,56 @@ line-height:1.6;
 ></div>
 
 </div>
+<!-- TITLE GENERATOR -->
+
+<div class="tool">
+
+<h2>🎯 YouTube Title Generator</h2>
+
+<p style="color:#94a3b8;">
+Enter your video topic and generate title ideas.
+</p>
+
+<input
+id="titleTopic"
+type="text"
+placeholder="Example: Black holes"
+style="
+width:100%;
+padding:16px;
+border-radius:12px;
+border:1px solid #334155;
+background:#020617;
+color:white;
+font-size:16px;
+outline:none;
+"
+>
+
+<button
+onclick="generateTitles()"
+style="
+margin-top:15px;
+background:white;
+color:#111827;
+"
+>
+Generate Titles
+</button>
+
+<div
+id="titleResult"
+style="
+display:none;
+margin-top:20px;
+background:#1e293b;
+padding:20px;
+border-radius:14px;
+line-height:1.8;
+"
+></div>
+
+</div>
 <!-- INFO -->
 
 <div class="info">
@@ -560,6 +610,47 @@ function generateHook() {
     result.textContent = randomHook;
 
     result.style.display = "block";
+    function generateTitles() {
+
+    const topic =
+        document.getElementById("titleTopic").value.trim();
+
+    const result =
+        document.getElementById("titleResult");
+
+    if (topic === "") {
+
+        alert("Enter a topic first.");
+
+        return;
+    }
+
+    const titles = [
+
+        `The Truth About ${topic} Nobody Tells You`,
+
+        `What Really Happens With ${topic}?`,
+
+        `The Dark Mystery Behind ${topic}`,
+
+        `Scientists Still Can't Explain This About ${topic}`,
+
+        `You Won't Believe What We Found About ${topic}`,
+
+        `The Strange Secret of ${topic}`,
+
+        `What If Everything You Know About ${topic} Is Wrong?`,
+
+        `This Changes Everything About ${topic}`
+
+    ];
+
+    result.innerHTML = titles
+        .map(title => `<div>🔥 ${title}</div>`)
+        .join("");
+
+    result.style.display = "block";
+}
 }
 </script>
 
