@@ -10,7 +10,7 @@
 <title>CreatorTools - Free Creator Tools</title>
 
 <meta name="description"
-content="Free creator tools including word counter, character counter, script timer, YouTube hook generator and title generator.">
+content="Free creator tools for YouTubers, writers and content creators. Word counter, script timer, hook generator and smart YouTube title generator.">
 
 <style>
 
@@ -163,53 +163,39 @@ button:hover {
 
 
 /* =========================
-   WORD COUNTER STATS
+   STATS
 ========================= */
 
 .buttons {
     display: flex;
-
     gap: 10px;
-
     margin-top: 15px;
 }
 
 .stats {
     display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
+    grid-template-columns: repeat(4, 1fr);
     gap: 12px;
-
     margin-top: 18px;
 }
 
 .stat {
     background: #1e293b;
-
     border-radius: 14px;
-
     padding: 18px 10px;
-
     text-align: center;
 }
 
 .number {
     display: block;
-
     font-size: 26px;
-
     font-weight: 800;
 }
 
 .label {
     display: block;
-
     color: #94a3b8;
-
     font-size: 13px;
-
     margin-top: 5px;
 }
 
@@ -224,49 +210,35 @@ button:hover {
 
 .speed-box label {
     display: block;
-
     color: #cbd5e1;
-
     margin-bottom: 8px;
 }
 
 select {
     width: 100%;
-
     padding: 13px;
-
     border-radius: 10px;
-
     border: 1px solid #334155;
-
     background: #020617;
-
     color: white;
-
     font-size: 16px;
 }
 
 .timer-result {
     margin-top: 20px;
-
     background: #1e293b;
-
     border-radius: 14px;
-
     padding: 25px;
-
     text-align: center;
 }
 
 .timer-number {
     font-size: 38px;
-
     font-weight: 800;
 }
 
 .timer-label {
     color: #94a3b8;
-
     margin-top: 5px;
 }
 
@@ -292,12 +264,34 @@ select {
 .result-item {
     padding: 12px 0;
 
-    border-bottom:
-        1px solid #334155;
+    border-bottom: 1px solid #334155;
 }
 
 .result-item:last-child {
     border-bottom: none;
+}
+
+
+/* =========================
+   CATEGORY BADGE
+========================= */
+
+.category {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    background: #334155;
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+
+    font-weight: bold;
 }
 
 
@@ -321,7 +315,6 @@ select {
 
 .info h2 {
     color: white;
-
     margin-top: 0;
 }
 
@@ -356,8 +349,7 @@ footer {
     }
 
     .stats {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .buttons {
@@ -589,7 +581,7 @@ Estimated voiceover duration
 <p style="color:#94a3b8;">
 
 Enter your topic and generate
-a quick hook idea.
+a relevant hook.
 
 </p>
 
@@ -597,7 +589,7 @@ a quick hook idea.
 <input
 id="topic"
 type="text"
-placeholder="Example: Black holes"
+placeholder="Example: Rohit Sharma"
 >
 
 
@@ -623,19 +615,20 @@ class="result"
 
 
 <!-- =========================
-     TITLE GENERATOR
+     SMART TITLE GENERATOR
 ========================= -->
 
 <div class="tool">
 
 <h2>
-🎯 YouTube Title Generator
+🎯 Smart YouTube Title Generator
 </h2>
 
 <p style="color:#94a3b8;">
 
-Enter your video topic and generate
-8 title ideas.
+Enter a topic. The generator will
+detect the topic type and create
+relevant titles.
 
 </p>
 
@@ -643,7 +636,7 @@ Enter your video topic and generate
 <input
 id="titleTopic"
 type="text"
-placeholder="Example: Black holes"
+placeholder="Example: Rohit Sharma"
 >
 
 
@@ -653,9 +646,17 @@ onclick="generateTitles()"
 style="margin-top:15px;"
 >
 
-Generate Titles
+Generate Smart Titles
 
 </button>
+
+
+<div
+id="titleCategory"
+class="category"
+style="display:none;"
+>
+</div>
 
 
 <div
@@ -698,10 +699,6 @@ in your browser.
 
 
 
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer>
 
 CreatorTools — Free tools for creators
@@ -713,16 +710,12 @@ CreatorTools — Free tools for creators
 
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
 <script>
 
 
-/* =========================
+/* =====================================================
    WORD COUNTER
-========================= */
+===================================================== */
 
 const textBox =
     document.getElementById("text");
@@ -734,15 +727,10 @@ function updateCounter() {
         textBox.value;
 
 
-    let words = 0;
-
-
-    if (text.trim() !== "") {
-
-        words =
-            text.trim().split(/\s+/).length;
-
-    }
+    const words =
+        text.trim() === ""
+        ? 0
+        : text.trim().split(/\s+/).length;
 
 
     const characters =
@@ -759,18 +747,13 @@ function updateCounter() {
         .length;
 
 
-    let readingMinutes = 0;
-
-
-    if (words > 0) {
-
-        readingMinutes =
-            Math.max(
-                1,
-                Math.ceil(words / 200)
-            );
-
-    }
+    const readingMinutes =
+        words === 0
+        ? 0
+        : Math.max(
+            1,
+            Math.ceil(words / 200)
+        );
 
 
     document.getElementById(
@@ -802,9 +785,9 @@ textBox.addEventListener(
 
 
 
-/* =========================
-   COPY
-========================= */
+/* =====================================================
+   COPY TEXT
+===================================================== */
 
 function copyText() {
 
@@ -832,9 +815,9 @@ function copyText() {
 
 
 
-/* =========================
-   CLEAR
-========================= */
+/* =====================================================
+   CLEAR TEXT
+===================================================== */
 
 function clearText() {
 
@@ -847,9 +830,9 @@ function clearText() {
 
 
 
-/* =========================
+/* =====================================================
    SCRIPT TIMER
-========================= */
+===================================================== */
 
 const scriptBox =
     document.getElementById("script");
@@ -864,15 +847,10 @@ function updateTimer() {
         scriptBox.value;
 
 
-    let words = 0;
-
-
-    if (text.trim() !== "") {
-
-        words =
-            text.trim().split(/\s+/).length;
-
-    }
+    const words =
+        text.trim() === ""
+        ? 0
+        : text.trim().split(/\s+/).length;
 
 
     const speed =
@@ -921,9 +899,797 @@ speedBox.addEventListener(
 
 
 
-/* =========================
-   HOOK GENERATOR
-========================= */
+/* =====================================================
+   TOPIC CATEGORY DETECTOR
+===================================================== */
+
+function detectCategory(topic) {
+
+    const t =
+        topic.toLowerCase();
+
+
+    /* SPORTS */
+
+    const sportsWords = [
+
+        "rohit",
+        "sharma",
+        "virat",
+        "kohli",
+        "dhoni",
+        "cricket",
+        "football",
+        "soccer",
+        "basketball",
+        "tennis",
+        "messi",
+        "ronaldo",
+        "neymar",
+        "lebron",
+        "curry",
+        "f1",
+        "formula 1",
+        "wrestling",
+        "ufc",
+        "boxing",
+        "ipl",
+        "world cup",
+        "premier league"
+
+    ];
+
+
+    if (
+        sportsWords.some(
+            word => t.includes(word)
+        )
+    ) {
+
+        return "sports";
+
+    }
+
+
+    /* GAMING */
+
+    const gamingWords = [
+
+        "minecraft",
+        "fortnite",
+        "roblox",
+        "gta",
+        "grand theft auto",
+        "valorant",
+        "minecraft",
+        "pubg",
+        "free fire",
+        "pokemon",
+        "zelda",
+        "gaming",
+        "game",
+        "games",
+        "xbox",
+        "playstation",
+        "steam",
+        "elden ring",
+        "terraria",
+        "among us"
+
+    ];
+
+
+    if (
+        gamingWords.some(
+            word => t.includes(word)
+        )
+    ) {
+
+        return "gaming";
+
+    }
+
+
+    /* SCIENCE / SPACE */
+
+    const scienceWords = [
+
+        "black hole",
+        "black holes",
+        "space",
+        "universe",
+        "planet",
+        "planets",
+        "earth",
+        "mars",
+        "moon",
+        "sun",
+        "galaxy",
+        "galaxies",
+        "star",
+        "stars",
+        "nasa",
+        "physics",
+        "quantum",
+        "science",
+        "scientist",
+        "dinosaurs",
+        "dinosaur",
+        "evolution",
+        "gravity",
+        "ocean",
+        "deep sea",
+        "volcano",
+        "atom",
+        "atoms"
+
+    ];
+
+
+    if (
+        scienceWords.some(
+            word => t.includes(word)
+        )
+    ) {
+
+        return "science";
+
+    }
+
+
+    /* TECHNOLOGY / AI */
+
+    const technologyWords = [
+
+        "ai",
+        "artificial intelligence",
+        "chatgpt",
+        "robot",
+        "robots",
+        "robotics",
+        "technology",
+        "tech",
+        "iphone",
+        "android",
+        "apple",
+        "google",
+        "microsoft",
+        "computer",
+        "laptop",
+        "internet",
+        "coding",
+        "python",
+        "programming",
+        "software",
+        "elon musk",
+        "tesla"
+
+    ];
+
+
+    if (
+        technologyWords.some(
+            word => t.includes(word)
+        )
+    ) {
+
+        return "technology";
+
+    }
+
+
+    /* HISTORY */
+
+    const historyWords = [
+
+        "history",
+        "ancient",
+        "roman empire",
+        "egypt",
+        "egyptian",
+        "pharaoh",
+        "medieval",
+        "ww1",
+        "ww2",
+        "world war",
+        "war",
+        "vikings",
+        "samurai",
+        "napoleon",
+        "hitler",
+        "alexander the great",
+        "historical",
+        "civilization",
+        "civilisations"
+
+    ];
+
+
+    if (
+        historyWords.some(
+            word => t.includes(word)
+        )
+    ) {
+
+        return "history";
+
+    }
+
+
+    /* MOVIES / ENTERTAINMENT */
+
+    const entertainmentWords = [
+
+        "movie",
+        "movies",
+        "film",
+        "actor",
+        "actress",
+        "hollywood",
+        "bollywood",
+        "netflix",
+        "marvel",
+        "dc",
+        "avengers",
+        "batman",
+        "superman",
+        "spiderman",
+        "star wars",
+        "series",
+        "tv show",
+        "celebrity",
+        "singer",
+        "music",
+        "song",
+        "album"
+
+    ];
+
+
+    if (
+        entertainmentWords.some(
+            word => t.includes(word)
+        )
+    ) {
+
+        return "entertainment";
+
+    }
+
+
+    /* BUSINESS */
+
+    const businessWords = [
+
+        "business",
+        "money",
+        "startup",
+        "company",
+        "companies",
+        "entrepreneur",
+        "entrepreneurship",
+        "stock",
+        "stocks",
+        "investing",
+        "investment",
+        "market",
+        "finance",
+        "millionaire",
+        "billionaire",
+        "amazon",
+        "brand"
+
+    ];
+
+
+    if (
+        businessWords.some(
+            word => t.includes(word)
+        )
+    ) {
+
+        return "business";
+
+    }
+
+
+    /* TRAVEL / PLACES */
+
+    const travelWords = [
+
+        "india",
+        "usa",
+        "america",
+        "london",
+        "paris",
+        "dubai",
+        "tokyo",
+        "japan",
+        "new york",
+        "mumbai",
+        "delhi",
+        "surat",
+        "travel",
+        "country",
+        "city",
+        "place",
+        "tourism",
+        "hotel",
+        "airport"
+
+    ];
+
+
+    if (
+        travelWords.some(
+            word => t.includes(word)
+        )
+    ) {
+
+        return "travel";
+
+    }
+
+
+    /* FOOD */
+
+    const foodWords = [
+
+        "food",
+        "pizza",
+        "burger",
+        "chicken",
+        "recipe",
+        "cooking",
+        "restaurant",
+        "coffee",
+        "chocolate",
+        "cake",
+        "dessert",
+        "street food"
+
+    ];
+
+
+    if (
+        foodWords.some(
+            word => t.includes(word)
+        )
+    ) {
+
+        return "food";
+
+    }
+
+
+    /* DEFAULT */
+
+    return "general";
+}
+
+
+
+/* =====================================================
+   SMART TITLE DATABASE
+===================================================== */
+
+const titleTemplates = {
+
+
+    sports: [
+
+        "The Untold Story of {topic}",
+
+        "How {topic} Changed Everything",
+
+        "The Incredible Journey of {topic}",
+
+        "What Makes {topic} So Dangerous?",
+
+        "The Moment That Changed {topic}'s Career",
+
+        "Why {topic} Is Different From Everyone Else",
+
+        "The Story Behind {topic} Nobody Talks About",
+
+        "What You Didn't Know About {topic}",
+
+        "How {topic} Became a Superstar",
+
+        "The Rise of {topic}",
+
+        "The Greatest Moments of {topic}",
+
+        "Why Fans Can't Forget {topic}"
+
+    ],
+
+
+    gaming: [
+
+        "The Gaming Mystery Nobody Solved",
+
+        "What Happens If You Try This in {topic}?",
+
+        "The Secret Most Players Miss in {topic}",
+
+        "The Weirdest Discovery in {topic}",
+
+        "You Probably Didn't Know This About {topic}",
+
+        "The Hidden Side of {topic}",
+
+        "This Changes How You Play {topic}",
+
+        "The Strange Thing About {topic}",
+
+        "What Happens When You Push {topic} Too Far?",
+
+        "The Most Insane Thing You Can Do in {topic}",
+
+        "Nobody Expected This in {topic}",
+
+        "The Secret Behind {topic}"
+
+    ],
+
+
+    science: [
+
+        "The Mystery Behind {topic}",
+
+        "What Really Happens Inside {topic}?",
+
+        "Why {topic} Is Stranger Than You Think",
+
+        "The Darkest Mystery About {topic}",
+
+        "Scientists Are Still Trying to Understand {topic}",
+
+        "The Strange Truth About {topic}",
+
+        "What Would Happen If {topic} Disappeared?",
+
+        "The Hidden Secret of {topic}",
+
+        "Why {topic} Should Terrify You",
+
+        "The Most Mysterious Thing About {topic}",
+
+        "What Nobody Tells You About {topic}",
+
+        "The Unanswered Question About {topic}"
+
+    ],
+
+
+    technology: [
+
+        "The Future of {topic}",
+
+        "What Nobody Tells You About {topic}",
+
+        "How {topic} Is Changing Everything",
+
+        "The Hidden Side of {topic}",
+
+        "Why {topic} Is More Powerful Than You Think",
+
+        "The Secret Behind {topic}",
+
+        "What Happens When {topic} Gets Smarter?",
+
+        "The Technology Changing {topic}",
+
+        "Why Everyone Is Talking About {topic}",
+
+        "The Strange Future of {topic}",
+
+        "What {topic} Could Look Like in 10 Years",
+
+        "The Biggest Problem With {topic}"
+
+    ],
+
+
+    history: [
+
+        "The Forgotten Story of {topic}",
+
+        "What Really Happened With {topic}?",
+
+        "The Dark History of {topic}",
+
+        "The Mystery Behind {topic}",
+
+        "What History Books Don't Tell You About {topic}",
+
+        "The Secret Story of {topic}",
+
+        "How {topic} Changed History",
+
+        "The Strange Truth About {topic}",
+
+        "The Most Mysterious Part of {topic}",
+
+        "What Nobody Knows About {topic}",
+
+        "The Day That Changed {topic} Forever",
+
+        "The Untold Story Behind {topic}"
+
+    ],
+
+
+    entertainment: [
+
+        "The Untold Story of {topic}",
+
+        "What Nobody Tells You About {topic}",
+
+        "The Secret Behind {topic}",
+
+        "The Rise of {topic}",
+
+        "What Really Happened With {topic}?",
+
+        "The Story Behind {topic}",
+
+        "Why Everyone Remembers {topic}",
+
+        "The Hidden Side of {topic}",
+
+        "The Moment That Changed {topic}",
+
+        "What You Didn't Know About {topic}",
+
+        "The Mystery Surrounding {topic}",
+
+        "How {topic} Became Famous"
+
+    ],
+
+
+    business: [
+
+        "How {topic} Makes Money",
+
+        "The Business Behind {topic}",
+
+        "The Secret Strategy Behind {topic}",
+
+        "How {topic} Became So Successful",
+
+        "What Nobody Tells You About {topic}",
+
+        "The Hidden Side of {topic}",
+
+        "Why {topic} Is So Valuable",
+
+        "The Story Behind {topic}",
+
+        "How {topic} Changed the Market",
+
+        "The Rise of {topic}",
+
+        "The Money Behind {topic}",
+
+        "What You Can Learn From {topic}"
+
+    ],
+
+
+    travel: [
+
+        "The Hidden Side of {topic}",
+
+        "Why You Need to See {topic}",
+
+        "The Secret Places of {topic}",
+
+        "What Nobody Tells You About {topic}",
+
+        "The Strange Truth About {topic}",
+
+        "What It's Really Like in {topic}",
+
+        "The Most Mysterious Place in {topic}",
+
+        "Things You Didn't Know About {topic}",
+
+        "Why {topic} Is So Fascinating",
+
+        "The Story Behind {topic}",
+
+        "The Hidden History of {topic}",
+
+        "What Makes {topic} So Special?"
+
+    ],
+
+
+    food: [
+
+        "The Secret Behind {topic}",
+
+        "Why {topic} Tastes So Good",
+
+        "The Truth About {topic}",
+
+        "What Nobody Tells You About {topic}",
+
+        "The Story Behind {topic}",
+
+        "Why Everyone Loves {topic}",
+
+        "The Hidden Secret of {topic}",
+
+        "What Happens When You Make {topic} This Way?",
+
+        "The Most Interesting Thing About {topic}",
+
+        "You Probably Didn't Know This About {topic}",
+
+        "The Real Reason {topic} Is So Popular",
+
+        "The Strange History of {topic}"
+
+    ],
+
+
+    general: [
+
+        "The Truth About {topic} Nobody Tells You",
+
+        "What Really Happens With {topic}?",
+
+        "The Hidden Story Behind {topic}",
+
+        "Why {topic} Is Stranger Than You Think",
+
+        "The Secret Side of {topic}",
+
+        "What Nobody Knows About {topic}",
+
+        "The Strange Truth About {topic}",
+
+        "The Story Behind {topic}",
+
+        "This Changes How You See {topic}",
+
+        "The Mystery Behind {topic}",
+
+        "What You Didn't Know About {topic}",
+
+        "The Unexpected Truth About {topic}"
+
+    ]
+
+};
+
+
+
+/* =====================================================
+   SMART TITLE GENERATOR
+===================================================== */
+
+function generateTitles() {
+
+    const topic =
+        document
+        .getElementById("titleTopic")
+        .value
+        .trim();
+
+
+    const result =
+        document
+        .getElementById("titleResult");
+
+
+    const categoryBox =
+        document
+        .getElementById("titleCategory");
+
+
+    if (topic === "") {
+
+        alert(
+            "Enter a topic first."
+        );
+
+        return;
+    }
+
+
+    const category =
+        detectCategory(topic);
+
+
+    const categoryNames = {
+
+        sports: "🏏 Sports / Athlete",
+
+        gaming: "🎮 Gaming",
+
+        science: "🔬 Science / Space",
+
+        technology: "🤖 Technology",
+
+        history: "🏛️ History",
+
+        entertainment: "🎬 Entertainment",
+
+        business: "💼 Business",
+
+        travel: "🌍 Travel / Places",
+
+        food: "🍔 Food",
+
+        general: "✨ General"
+
+    };
+
+
+    categoryBox.textContent =
+        "Detected: " +
+        categoryNames[category];
+
+
+    categoryBox.style.display =
+        "inline-block";
+
+
+    const templates =
+        titleTemplates[category];
+
+
+    /* SHUFFLE */
+
+    const shuffled =
+        [...templates].sort(
+            () => Math.random() - 0.5
+        );
+
+
+    /* SELECT 8 */
+
+    const selected =
+        shuffled.slice(0, 8);
+
+
+    /* REPLACE TOPIC */
+
+    const finalTitles =
+        selected.map(
+            template =>
+            template.replace(
+                /\{topic\}/g,
+                topic
+            )
+        );
+
+
+    result.innerHTML =
+        finalTitles
+        .map(
+            title =>
+            `<div class="result-item">
+                🔥 ${title}
+            </div>`
+        )
+        .join("");
+
+
+    result.style.display =
+        "block";
+}
+
+
+
+/* =====================================================
+   SMART HOOK GENERATOR
+===================================================== */
 
 function generateHook() {
 
@@ -949,133 +1715,140 @@ function generateHook() {
     }
 
 
-    const hooks = [
-
-        "You probably don't know the truth about " +
-        topic +
-        ".",
-
-        "What if everything you knew about " +
-        topic +
-        " was wrong?",
-
-        "There's something strange about " +
-        topic +
-        " that almost nobody talks about.",
-
-        "Here's the part about " +
-        topic +
-        " that most people miss.",
-
-        "This might completely change the way you look at " +
-        topic +
-        "."
-
-    ];
+    const category =
+        detectCategory(topic);
 
 
-    const randomIndex =
-        Math.floor(
-            Math.random() *
-            hooks.length
-        );
+    let hooks = [];
+
+
+    if (category === "sports") {
+
+        hooks = [
+
+            `There's a side of ${topic} most fans never see.`,
+
+            `Before you judge ${topic}, you need to know this.`,
+
+            `This moment changed everything for ${topic}.`,
+
+            `Here's what makes ${topic} different.`,
+
+            `Most people don't know this about ${topic}.`
+
+        ];
+
+    }
+
+
+    else if (category === "gaming") {
+
+        hooks = [
+
+            `Most players don't know this about ${topic}.`,
+
+            `There's a hidden secret in ${topic}.`,
+
+            `You probably haven't tried this in ${topic}.`,
+
+            `This changes the way you play ${topic}.`,
+
+            `Something strange is hiding inside ${topic}.`
+
+        ];
+
+    }
+
+
+    else if (category === "science") {
+
+        hooks = [
+
+            `Scientists still have questions about ${topic}.`,
+
+            `The truth about ${topic} is stranger than you think.`,
+
+            `There's something unusual about ${topic}.`,
+
+            `What happens with ${topic} is absolutely fascinating.`,
+
+            `We still don't fully understand ${topic}.`
+
+        ];
+
+    }
+
+
+    else if (category === "technology") {
+
+        hooks = [
+
+            `The future of ${topic} may be closer than you think.`,
+
+            `There's something about ${topic} most people miss.`,
+
+            `${topic} is changing faster than you realize.`,
+
+            `Here's the hidden side of ${topic}.`,
+
+            `This could completely change ${topic}.`
+
+        ];
+
+    }
+
+
+    else if (category === "history") {
+
+        hooks = [
+
+            `History left out a fascinating part of ${topic}.`,
+
+            `What really happened with ${topic}?`,
+
+            `There's a forgotten story behind ${topic}.`,
+
+            `Most people don't know this about ${topic}.`,
+
+            `The truth about ${topic} is darker than you think.`
+
+        ];
+
+    }
+
+
+    else {
+
+        hooks = [
+
+            `There's something about ${topic} that almost nobody talks about.`,
+
+            `You probably don't know the full story behind ${topic}.`,
+
+            `What if everything you knew about ${topic} was wrong?`,
+
+            `Here's the part about ${topic} that most people miss.`,
+
+            `The truth about ${topic} is stranger than you think.`
+
+        ];
+
+    }
 
 
     const randomHook =
-        hooks[randomIndex];
+        hooks[
+            Math.floor(
+                Math.random() *
+                hooks.length
+            )
+        ];
 
 
     result.innerHTML =
         `<div class="result-item">
             🔥 ${randomHook}
         </div>`;
-
-
-    result.style.display =
-        "block";
-}
-
-
-
-/* =========================
-   TITLE GENERATOR
-========================= */
-
-function generateTitles() {
-
-    const topic =
-        document
-        .getElementById("titleTopic")
-        .value
-        .trim();
-
-
-    const result =
-        document
-        .getElementById("titleResult");
-
-
-    if (topic === "") {
-
-        alert(
-            "Enter a topic first."
-        );
-
-        return;
-    }
-
-
-    const titles = [
-
-        "The Truth About " +
-        topic +
-        " Nobody Tells You",
-
-        "What Really Happens With " +
-        topic +
-        "?",
-
-        "The Dark Mystery Behind " +
-        topic,
-
-        "Scientists Still Can't Explain This About " +
-        topic,
-
-        "You Won't Believe What We Found About " +
-        topic,
-
-        "The Strange Secret of " +
-        topic,
-
-        "What If Everything You Know About " +
-        topic +
-        " Is Wrong?",
-
-        "This Changes Everything About " +
-        topic
-
-    ];
-
-
-    let html = "";
-
-
-    for (
-        let i = 0;
-        i < titles.length;
-        i++
-    ) {
-
-        html +=
-            `<div class="result-item">
-                🔥 ${titles[i]}
-            </div>`;
-
-    }
-
-
-    result.innerHTML =
-        html;
 
 
     result.style.display =
